@@ -74,7 +74,7 @@ public class verification_teacher extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            sendUserToHome();
+                            sendUserToHome1();
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 teacherVerificationFeedback.setVisibility(View.VISIBLE);
@@ -89,11 +89,12 @@ public class verification_teacher extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(mCurrentUser != null){
+            sendUserToHome1();
 
         }
     }
 
-    public void sendUserToHome(){
+    public void sendUserToHome1(){
         Intent homeIntent = new Intent(verification_teacher.this, welcome_teacher.class);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

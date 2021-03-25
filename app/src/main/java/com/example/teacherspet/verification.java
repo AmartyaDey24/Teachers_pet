@@ -26,7 +26,7 @@ public class verification extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
 
-    private String AuthCredential;
+    private String verificationID;
 
     private EditText studentEnterOtp;
     private Button studentVerificationButton;
@@ -42,7 +42,7 @@ public class verification extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
 
-        AuthCredential = getIntent().getStringExtra("AuthCredentials");
+        verificationID = getIntent().getStringExtra("AuthCredentials");
 
         studentEnterOtp = findViewById(R.id.studentotp);
         studentVerificationButton = findViewById(R.id.studentotpbutton);
@@ -62,7 +62,7 @@ public class verification extends AppCompatActivity {
 
                     studentVerificationProgress.setVisibility(View.VISIBLE);
                     studentVerificationButton.setEnabled(false);
-                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(AuthCredential, studentOtp);
+                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID, studentOtp);
                     signInWithPhoneAuthCredential(credential);
                 }
 
