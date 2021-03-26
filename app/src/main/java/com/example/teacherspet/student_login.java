@@ -12,8 +12,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -66,10 +70,10 @@ public class student_login extends AppCompatActivity {
                 String studentEmail = student_email.getText().toString();
                 String studentCompletePhone = studentCountryCode + studentPhone;
 
-                if(studentCountryCode.isEmpty() || studentPhone.isEmpty() || studentName.isEmpty() || studentUSN.isEmpty() || studentEmail.isEmpty()){
+                if (studentCountryCode.isEmpty() || studentPhone.isEmpty() || studentName.isEmpty() || studentUSN.isEmpty() || studentEmail.isEmpty()) {
                     student_feedback.setText("Please fill in the complete form");
                     student_feedback.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     student_progress.setVisibility(View.VISIBLE);
                     student_loginButton.setEnabled(false);
 
@@ -87,12 +91,16 @@ public class student_login extends AppCompatActivity {
         studentCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                signInWithPhoneAuthCredential(phoneAuthCredential);
 
             }
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-                Log.d("PHONE_VERIFY", "The phone number Verification failed");
+                student_feedback.setText("Verification Failed");
+                student_feedback.setVisibility(View.VISIBLE);
+                student_progress.setVisibility(View.INVISIBLE);
+                student_loginButton.setEnabled(true);
 
 
             }
@@ -101,8 +109,9 @@ public class student_login extends AppCompatActivity {
             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
 
-                Intent studentOtpIntent = new Intent(student_login.this,verification.class);
-                studentOtpIntent.putExtra("AuthCredentials",s);
+
+                Intent studentOtpIntent = new Intent(student_login.this, verification.class);
+                studentOtpIntent.putExtra("AuthCredentials", s);
                 startActivity(studentOtpIntent);
             }
         };
@@ -112,12 +121,39 @@ public class student_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(mCurrentUser != null){
+        if (mCurrentUser != null) {
             Intent homeIntent = new Intent(student_login.this, welcome_student.class);
             homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(homeIntent);
             finish();
         }
+    }
+
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(student_login.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            sendUserToHome();
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                student_feedback.setVisibility(View.VISIBLE);
+                                student_feedback.setText("Invalid OTP");
+                            }
+                        }
+                        student_progress.setVisibility(View.INVISIBLE);
+                        student_loginButton.setEnabled(true);
+                    }
+                });
+    }
+
+    public void sendUserToHome(){
+        Intent homeIntent = new Intent(student_login.this, welcome_student.class);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(homeIntent);
+        finish();
     }
 }

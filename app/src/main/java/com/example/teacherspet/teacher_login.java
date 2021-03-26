@@ -11,8 +11,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -62,10 +66,10 @@ public class teacher_login extends AppCompatActivity {
                 String teacherEmail = teacher_email.getText().toString();
                 String teacherCompletePhone = teacherCountryCode + teacherPhone;
 
-                if(teacherCountryCode.isEmpty() || teacherPhone.isEmpty() || teacherName.isEmpty() || teacherEmail.isEmpty()){
+                if (teacherCountryCode.isEmpty() || teacherPhone.isEmpty() || teacherName.isEmpty() || teacherEmail.isEmpty()) {
                     teacher_feedback.setText("Please fill in the complete form");
                     teacher_feedback.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     teacher_progress.setVisibility(View.VISIBLE);
                     teacherLoginButton.setEnabled(false);
 
@@ -84,11 +88,16 @@ public class teacher_login extends AppCompatActivity {
         teacherCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                signInWithPhoneAuthCredential(phoneAuthCredential);
 
             }
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
+                teacher_feedback.setText("Verification Failed");
+                teacher_feedback.setVisibility(View.VISIBLE);
+                teacher_progress.setVisibility(View.INVISIBLE);
+                teacherLoginButton.setEnabled(true);
 
             }
 
@@ -96,8 +105,8 @@ public class teacher_login extends AppCompatActivity {
             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
 
-                Intent teacherOtpIntent = new Intent(teacher_login.this,verification_teacher.class);
-                teacherOtpIntent.putExtra("AuthCredentials",s);
+                Intent teacherOtpIntent = new Intent(teacher_login.this, verification_teacher.class);
+                teacherOtpIntent.putExtra("AuthCredentials", s);
                 startActivity(teacherOtpIntent);
             }
         };
@@ -107,12 +116,39 @@ public class teacher_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(mCurrentUser != null){
+        if (mCurrentUser != null) {
             Intent homeIntent = new Intent(teacher_login.this, welcome_teacher.class);
             homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(homeIntent);
             finish();
         }
+    }
+
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(teacher_login.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            sendUserToHome1();
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                teacher_feedback.setVisibility(View.VISIBLE);
+                                teacher_feedback.setText("Invalid OTP");
+                            }
+                        }
+                        teacher_progress.setVisibility(View.INVISIBLE);
+                        teacherLoginButton.setEnabled(true);
+                    }
+                });
+    }
+
+    public void sendUserToHome1(){
+        Intent homeIntent = new Intent(teacher_login.this, welcome_teacher.class);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(homeIntent);
+        finish();
     }
 }

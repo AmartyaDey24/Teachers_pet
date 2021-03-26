@@ -81,6 +81,8 @@ public class verification_teacher extends AppCompatActivity {
                                 teacherVerificationFeedback.setText("Invalid OTP");
                             }
                         }
+                        teacherVerificationProgress.setVisibility(View.INVISIBLE);
+                        teacherVerificationButton.setEnabled(true);
                     }
                 });
     }
