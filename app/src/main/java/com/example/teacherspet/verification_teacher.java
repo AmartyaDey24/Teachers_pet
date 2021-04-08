@@ -23,7 +23,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 public class verification_teacher extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private FirebaseUser mCurrentUser;
+    private FirebaseUser mCurrentUser1;
 
     private String AuthCredential;
 
@@ -38,7 +38,7 @@ public class verification_teacher extends AppCompatActivity {
         setContentView(R.layout.activity_verification_teacher);
 
         mAuth = FirebaseAuth.getInstance();
-        mCurrentUser = mAuth.getCurrentUser();
+        mCurrentUser1 = mAuth.getCurrentUser();
 
         AuthCredential = getIntent().getStringExtra("AuthCredentials");
 
@@ -90,7 +90,7 @@ public class verification_teacher extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(mCurrentUser != null){
+        if(mCurrentUser1 != null){
             sendUserToHome1();
 
         }

@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class welcome_teacher extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private FirebaseUser mCurrentUser;
+    private FirebaseUser mCurrentUser1;
 
     private Button teacherOfficialGrp;
     private Button teacherEvent;
@@ -27,7 +27,7 @@ public class welcome_teacher extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_teacher);
 
         mAuth = FirebaseAuth.getInstance();
-        mCurrentUser = mAuth.getCurrentUser();
+        mCurrentUser1 = mAuth.getCurrentUser();
 
         teacherOfficialGrp = findViewById(R.id.teacherOfficialGrp);
         teacherEvent = findViewById(R.id.teacherevent);
@@ -47,7 +47,7 @@ public class welcome_teacher extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(mCurrentUser == null){
+        if(mCurrentUser1 == null){
             sendUserToLogin1();
         }
     }

@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 public class teacher_login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private FirebaseUser mCurrentUser;
+    private FirebaseUser mCurrentUser1;
 
     private EditText teacher_countryCode;
     private EditText teacher_mob;
@@ -47,7 +47,7 @@ public class teacher_login extends AppCompatActivity {
         setTitle("Teacher Login");
 
         mAuth = FirebaseAuth.getInstance();
-        mCurrentUser = mAuth.getCurrentUser();
+        mCurrentUser1 = mAuth.getCurrentUser();
 
         teacher_countryCode = findViewById(R.id.countrycode1);
         teacher_mob = findViewById(R.id.teacher_mob);
@@ -116,7 +116,7 @@ public class teacher_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (mCurrentUser != null) {
+        if (mCurrentUser1 != null) {
             Intent homeIntent = new Intent(teacher_login.this, welcome_teacher.class);
             homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
