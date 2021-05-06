@@ -42,6 +42,14 @@ public class welcome_student extends AppCompatActivity {
                 sendUserToLogin();
             }
         });
+
+        facultyContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent facultyContact = new Intent(welcome_student.this,contactFaculty.class);
+                startActivity(facultyContact);
+            }
+        });
     }
 
     @Override
