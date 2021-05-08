@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeachersPet">
-        <activity android:name=".Notes.Sg_M2"></activity>
+        <activity android:name=".Calender.CalenderOfEvents"></activity>
+        <activity android:name=".Notes.Sg_M2" />
         <activity android:name=".Notes.Sg_M1" />
         <activity android:name=".Notes.Ins_M2" />
         <activity android:name=".Notes.Ina_M1" />
-
         <activity android:name=".Notes.SG" />
         <activity android:name=".Notes.INS" />
         <activity android:name=".Notes.Subjects" />
