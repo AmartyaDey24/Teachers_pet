@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeachersPet">
-        <activity android:name=".contactStudent"></activity>
+        <activity android:name=".Notes.Sg_M2"></activity>
+        <activity android:name=".Notes.Sg_M1" />
+        <activity android:name=".Notes.Ins_M2" />
+        <activity android:name=".Notes.Ina_M1" />
+
+        <activity android:name=".Notes.SG" />
+        <activity android:name=".Notes.INS" />
+        <activity android:name=".Notes.Subjects" />
+        <activity android:name=".contactStudent" />
         <activity android:name=".contactFaculty" />
         <activity android:name=".verification_teacher" />
         <activity android:name=".welcome_teacher" />

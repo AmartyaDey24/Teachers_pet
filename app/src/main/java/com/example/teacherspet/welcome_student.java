@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.teacherspet.Notes.Subjects;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -48,6 +49,13 @@ public class welcome_student extends AppCompatActivity {
             public void onClick(View v) {
                 Intent facultyContact = new Intent(welcome_student.this,contactFaculty.class);
                 startActivity(facultyContact);
+            }
+        });
+        viewNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent subjectlist = new Intent(welcome_student.this, Subjects.class);
+                startActivity(subjectlist);
             }
         });
     }
