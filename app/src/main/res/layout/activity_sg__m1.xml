@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="5dp"
     android:layout_height="match_parent"
     tools:context=".Notes.Sg_M1">
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/sg_m1recyclerview"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/imageslistitem"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
