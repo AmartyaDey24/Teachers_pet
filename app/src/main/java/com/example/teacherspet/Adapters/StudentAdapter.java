@@ -1,7 +1,6 @@
-package com.example.teacherspet;
+package com.example.teacherspet.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.teacherspet.R;
+import com.example.teacherspet.DataClass.UserStudent;
 
 import java.util.ArrayList;
 

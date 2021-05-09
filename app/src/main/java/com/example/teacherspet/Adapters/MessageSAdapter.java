@@ -1,4 +1,4 @@
-package com.example.teacherspet;
+package com.example.teacherspet.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.teacherspet.DataClass.MessageSt;
+import com.example.teacherspet.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;

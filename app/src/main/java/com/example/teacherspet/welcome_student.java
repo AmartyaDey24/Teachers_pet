@@ -9,11 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.teacherspet.Calender.CalenderOfEvents;
+import com.example.teacherspet.Chats.OfficialGroup;
 import com.example.teacherspet.Notes.Subjects;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class welcome_student extends AppCompatActivity {
 
@@ -72,6 +71,13 @@ public class welcome_student extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent subjectlist = new Intent(welcome_student.this, CalenderOfEvents.class);
+                startActivity(subjectlist);
+            }
+        });
+        studentOfficialGrp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent subjectlist = new Intent(welcome_student.this, OfficialGroup.class);
                 startActivity(subjectlist);
             }
         });

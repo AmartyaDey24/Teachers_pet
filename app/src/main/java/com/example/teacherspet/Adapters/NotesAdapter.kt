@@ -1,4 +1,4 @@
-package com.example.teacherspet.Notes
+package com.example.teacherspet.Adapters
 
 import android.view.LayoutInflater
 import android.view.View

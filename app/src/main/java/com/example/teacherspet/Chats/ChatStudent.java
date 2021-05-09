@@ -1,4 +1,4 @@
-package com.example.teacherspet;
+package com.example.teacherspet.Chats;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.teacherspet.Adapters.MessageSAdapter;
+import com.example.teacherspet.DataClass.MessageSt;
+import com.example.teacherspet.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

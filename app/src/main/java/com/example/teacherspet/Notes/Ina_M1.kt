@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.teacherspet.Adapters.NotesAdapter
 import com.example.teacherspet.R
 
 class Ina_M1 : AppCompatActivity() {
@@ -39,7 +40,7 @@ class Ina_M1 : AppCompatActivity() {
 
         val recyclerView=findViewById<RecyclerView>(R.id.ins_m1recyclerview)
         recyclerView.layoutManager=LinearLayoutManager(applicationContext)
-        recyclerView.adapter=NotesAdapter(list)
+        recyclerView.adapter= NotesAdapter(list)
     }
 
 

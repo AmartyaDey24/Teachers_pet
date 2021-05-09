@@ -1,4 +1,4 @@
-package com.example.teacherspet;
+package com.example.teacherspet.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.teacherspet.Chats.ChatStudent;
+import com.example.teacherspet.R;
+import com.example.teacherspet.DataClass.UserTeacher;
 
 import java.util.ArrayList;
 
@@ -40,7 +44,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(contextT,ChatStudent.class);
+                Intent intent = new Intent(contextT, ChatStudent.class);
                 intent.putExtra("names", userTeacher.getTeacherName());
                 intent.putExtra("uids", userTeacher.getUidT());
                 contextT.startActivity(intent);

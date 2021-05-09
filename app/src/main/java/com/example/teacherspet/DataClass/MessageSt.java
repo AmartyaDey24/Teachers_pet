@@ -1,4 +1,4 @@
-package com.example.teacherspet;
+package com.example.teacherspet.DataClass;
 
 public class MessageSt {
 

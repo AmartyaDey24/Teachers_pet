@@ -1,14 +1,14 @@
-package com.example.teacherspet;
+package com.example.teacherspet.Chats;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import com.example.teacherspet.databinding.ActivityChatStudentBinding;
+import com.example.teacherspet.Adapters.GroupMessageAdapter;
+import com.example.teacherspet.DataClass.MessageSt;
 import com.example.teacherspet.databinding.ActivityOfficialGroupBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
