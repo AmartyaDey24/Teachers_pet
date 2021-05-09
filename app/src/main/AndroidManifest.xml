@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.teacherspet">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,14 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeachersPet">
-        <activity android:name=".Calender.CalenderOfEvents"></activity>
-        <activity android:name=".Notes.Sg_M2" />
-        <activity android:name=".Notes.Sg_M1" />
-        <activity android:name=".Notes.Ins_M2" />
-        <activity android:name=".Notes.Ina_M1" />
-        <activity android:name=".Notes.SG" />
-        <activity android:name=".Notes.INS" />
-        <activity android:name=".Notes.Subjects" />
+        <activity android:name=".OfficialGroup"></activity>
+        <activity android:name=".ChatStudent" />
+        <activity android:name=".TeacherRegister" />
+        <activity android:name=".StudentRegister" />
         <activity android:name=".contactStudent" />
         <activity android:name=".contactFaculty" />
         <activity android:name=".verification_teacher" />
