@@ -50,6 +50,14 @@ public class welcome_teacher extends AppCompatActivity {
                 startActivity(studentContact);
             }
         });
+
+        teacherOfficialGrp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(welcome_teacher.this,OfficialGroup.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
