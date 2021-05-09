@@ -2,6 +2,7 @@ package com.example.teacherspet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -38,10 +39,12 @@ public class ChatStudent extends AppCompatActivity {
 
         chat = findViewById(R.id.chat);
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
+        chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         sendButton = findViewById(R.id.sendButtton);
 
         messageSts = new ArrayList<>();
         adapter = new MessageSAdapter(this, messageSts);
+        chatRecyclerView.setAdapter(adapter);
 
         String names = getIntent().getStringExtra("names");
         String receiverUids = getIntent().getStringExtra("uids");
@@ -58,13 +61,13 @@ public class ChatStudent extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                         messageSts.clear();
-                         for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                             MessageSt messageSt = snapshot1.getValue(MessageSt.class);
-                             messageSts.add(messageSt);
-                         }
+                        messageSts.clear();
+                        for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                            MessageSt messageSt = new MessageSt((String) snapshot1.getValue(), senderUids);
+                            messageSts.add(messageSt);
+                        }
 
-                         adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -78,7 +81,7 @@ public class ChatStudent extends AppCompatActivity {
             public void onClick(View v) {
                 String messageTxt = chat.getText().toString();
 
-                MessageSt messageSt = new MessageSt(messageTxt,senderUids);
+                MessageSt messageSt = new MessageSt(messageTxt, senderUids);
                 chat.setText("");
 
                 sDatabase.getReference().child("SChats")
