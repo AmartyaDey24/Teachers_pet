@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.teacherspet.Calender.CalenderOfEvents;
+import com.example.teacherspet.Notes.Subjects;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -57,6 +59,20 @@ public class welcome_student extends AppCompatActivity {
             public void onClick(View v) {
                 Intent facultyContact = new Intent(welcome_student.this,contactFaculty.class);
                 startActivity(facultyContact);
+            }
+        });
+        viewNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent subjectlist = new Intent(welcome_student.this, Subjects.class);
+                startActivity(subjectlist);
+            }
+        });
+        studentEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent subjectlist = new Intent(welcome_student.this, CalenderOfEvents.class);
+                startActivity(subjectlist);
             }
         });
     }
