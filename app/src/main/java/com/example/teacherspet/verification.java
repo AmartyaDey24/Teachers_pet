@@ -98,7 +98,7 @@ public class verification extends AppCompatActivity {
         }
     }
     public void sendUserToHome(){
-        Intent homeIntent = new Intent(verification.this, welcome_student.class);
+        Intent homeIntent = new Intent(verification.this, StudentRegister.class);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(homeIntent);

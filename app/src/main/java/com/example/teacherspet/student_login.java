@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,9 +33,6 @@ public class student_login extends AppCompatActivity {
 
     private EditText student_countryCode;
     private EditText student_phone;
-    private EditText student_name;
-    private EditText student_usn;
-    private EditText student_email;
 
     private Button student_loginButton;
     private ProgressBar student_progress;
@@ -53,9 +52,6 @@ public class student_login extends AppCompatActivity {
 
         student_countryCode = findViewById(R.id.countrycode);
         student_phone = findViewById(R.id.student_mob);
-        student_name = findViewById(R.id.student_name);
-        student_usn = findViewById(R.id.student_usn);
-        student_email = findViewById(R.id.student_email);
         student_loginButton = findViewById(R.id.student_login_button);
         student_progress = findViewById(R.id.progressBar);
         student_feedback = findViewById(R.id.feedback1);
@@ -65,17 +61,17 @@ public class student_login extends AppCompatActivity {
             public void onClick(View v) {
                 String studentCountryCode = student_countryCode.getText().toString();
                 String studentPhone = student_phone.getText().toString();
-                String studentName = student_name.getText().toString();
-                String studentUSN = student_usn.getText().toString();
-                String studentEmail = student_email.getText().toString();
+
                 String studentCompletePhone = studentCountryCode + studentPhone;
 
-                if (studentCountryCode.isEmpty() || studentPhone.isEmpty() || studentName.isEmpty() || studentUSN.isEmpty() || studentEmail.isEmpty()) {
-                    student_feedback.setText("Please fill in the complete form");
+
+                if (studentCountryCode.isEmpty() || studentPhone.isEmpty()) {
+                    student_feedback.setText("Please enter the mobile no.");
                     student_feedback.setVisibility(View.VISIBLE);
                 } else {
                     student_progress.setVisibility(View.VISIBLE);
                     student_loginButton.setEnabled(false);
+
 
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
                             studentCompletePhone,
@@ -92,6 +88,7 @@ public class student_login extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 signInWithPhoneAuthCredential(phoneAuthCredential);
+
 
             }
 

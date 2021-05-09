@@ -13,11 +13,11 @@
 
     <EditText
         android:id="@+id/countrycode1"
-        android:layout_width="45dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="226dp"
         android:ems="10"
         android:hint="Enter mobile no."
         android:inputType="phone"
@@ -25,52 +25,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/teacher_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Enter name"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countrycode1" />
-
-    <EditText
-        android:id="@+id/teachers_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:hint="Enter email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teacher_name" />
-
     <Button
         android:id="@+id/teacher_login_button"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teachers_email" />
+        app:layout_constraintTop_toBottomOf="@+id/teacher_mob" />
 
     <EditText
         android:id="@+id/teacher_mob"
@@ -78,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="226dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"

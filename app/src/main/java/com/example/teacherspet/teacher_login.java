@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,8 +32,6 @@ public class teacher_login extends AppCompatActivity {
 
     private EditText teacher_countryCode;
     private EditText teacher_mob;
-    private EditText teacher_name;
-    private EditText teacher_email;
 
     private Button teacherLoginButton;
     private ProgressBar teacher_progress;
@@ -51,8 +51,6 @@ public class teacher_login extends AppCompatActivity {
 
         teacher_countryCode = findViewById(R.id.countrycode1);
         teacher_mob = findViewById(R.id.teacher_mob);
-        teacher_name = findViewById(R.id.teacher_name);
-        teacher_email = findViewById(R.id.teachers_email);
         teacherLoginButton = findViewById(R.id.teacher_login_button);
         teacher_progress = findViewById(R.id.progressBar2);
         teacher_feedback = findViewById(R.id.feedback2);
@@ -62,16 +60,18 @@ public class teacher_login extends AppCompatActivity {
             public void onClick(View v) {
                 String teacherCountryCode = teacher_countryCode.getText().toString();
                 String teacherPhone = teacher_mob.getText().toString();
-                String teacherName = teacher_name.getText().toString();
-                String teacherEmail = teacher_email.getText().toString();
+
                 String teacherCompletePhone = teacherCountryCode + teacherPhone;
 
-                if (teacherCountryCode.isEmpty() || teacherPhone.isEmpty() || teacherName.isEmpty() || teacherEmail.isEmpty()) {
-                    teacher_feedback.setText("Please fill in the complete form");
+
+                if (teacherCountryCode.isEmpty() || teacherPhone.isEmpty()) {
+                    teacher_feedback.setText("Please Enter the mobile no.");
                     teacher_feedback.setVisibility(View.VISIBLE);
                 } else {
                     teacher_progress.setVisibility(View.VISIBLE);
                     teacherLoginButton.setEnabled(false);
+
+
 
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
                             teacherCompletePhone,
@@ -89,6 +89,7 @@ public class teacher_login extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 signInWithPhoneAuthCredential(phoneAuthCredential);
+
 
             }
 

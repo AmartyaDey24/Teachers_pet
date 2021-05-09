@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class welcome_student extends AppCompatActivity {
 
@@ -20,6 +23,8 @@ public class welcome_student extends AppCompatActivity {
     private Button facultyContact;
     private Button viewNotes;
     private Button studentLogout;
+
+    private TextView studentNameView, usnView, studentEmailView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,10 @@ public class welcome_student extends AppCompatActivity {
         facultyContact = findViewById(R.id.facultyContact);
         viewNotes = findViewById(R.id.viewNotes);
         studentLogout = findViewById(R.id.studentLogout);
+
+        studentNameView = findViewById(R.id.studentNameView);
+        usnView = findViewById(R.id.usnView);
+        studentEmailView = findViewById(R.id.studentEmailview);
 
         studentLogout.setOnClickListener(new View.OnClickListener() {
             @Override
