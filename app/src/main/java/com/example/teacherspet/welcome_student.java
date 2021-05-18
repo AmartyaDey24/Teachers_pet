@@ -1,5 +1,6 @@
 package com.example.teacherspet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,11 +14,18 @@ import com.example.teacherspet.Chats.OfficialGroup;
 import com.example.teacherspet.Notes.Subjects;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class welcome_student extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
+
+    DatabaseReference reference;
 
     private Button studentOfficialGrp;
     private Button studentEvent;
@@ -32,6 +40,8 @@ public class welcome_student extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_student);
 
+        getSupportActionBar().hide();
+
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
 
@@ -44,6 +54,28 @@ public class welcome_student extends AppCompatActivity {
         studentNameView = findViewById(R.id.studentNameView);
         usnView = findViewById(R.id.usnView);
         studentEmailView = findViewById(R.id.studentEmailview);
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Student").child(mCurrentUser.getUid());
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String username = snapshot.child("studentName").getValue().toString();
+                String usn = snapshot.child("studentUsn").getValue().toString();
+                String email = snapshot.child("studentEmail").getValue().toString();
+
+                studentNameView.setText(username);
+                usnView.setText(usn);
+                studentEmailView.setText(email);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         studentLogout.setOnClickListener(new View.OnClickListener() {
             @Override

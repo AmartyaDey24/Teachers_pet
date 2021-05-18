@@ -28,6 +28,8 @@ public class StudentRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_register);
 
+        setTitle("Student Register");
+
         sAuth = FirebaseAuth.getInstance();
         sDatabase = FirebaseDatabase.getInstance();
 
@@ -42,6 +44,7 @@ public class StudentRegister extends AppCompatActivity {
         studentCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 welcomeStudent();
             }
         });
@@ -62,6 +65,13 @@ public class StudentRegister extends AppCompatActivity {
 //            Progress Bar to do
         }
         else {
+
+            UserStudent userStudentM = new UserStudent(sUid,sName,sUsn,sEmail);
+            sDatabase.getReference()
+                    .child("Users")
+                    .child(sUid)
+                    .setValue(userStudentM);
+
             UserStudent userStudent = new UserStudent(sUid,sName,sUsn,sEmail);
             sDatabase.getReference()
                     .child("Student")

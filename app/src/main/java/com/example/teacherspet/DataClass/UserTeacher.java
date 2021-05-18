@@ -1,15 +1,33 @@
 package com.example.teacherspet.DataClass;
 
 public class UserTeacher {
-    String uidT,teacherName,teacherEmail;
+    String uidT,teacherName,teacherEmail,dep,course;
 
-    public UserTeacher(String uidT, String teacherName, String teacherEmail) {
+    public UserTeacher(String uidT, String teacherName, String teacherEmail, String dep, String course) {
         this.uidT = uidT;
         this.teacherName = teacherName;
         this.teacherEmail = teacherEmail;
+        this.dep = dep;
+        this.course = course;
     }
 
     public UserTeacher() {
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getDep() {
+        return dep;
+    }
+
+    public void setDep(String dep) {
+        this.dep = dep;
     }
 
     public String getUidT() {
@@ -21,10 +39,12 @@ public class UserTeacher {
     }
 
     public String getTeacherName() {
+
         return teacherName;
     }
 
     public void setTeacherName(String teacherName) {
+
         this.teacherName = teacherName;
     }
 

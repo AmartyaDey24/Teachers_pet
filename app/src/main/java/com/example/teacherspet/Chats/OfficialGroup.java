@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.teacherspet.Adapters.GroupMessageAdapter;
 import com.example.teacherspet.DataClass.MessageSt;
@@ -64,18 +66,18 @@ public class OfficialGroup extends AppCompatActivity {
                     }
                 });
 
-        binding.sendButtton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String messageTxt = binding.chat.getText().toString();
+            binding.sendButtton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String messageTxt = binding.chat.getText().toString();
 
-                MessageSt messageSt = new MessageSt(messageTxt,senderUid);
-                binding.chat.setText("");
+                    MessageSt messageSt = new MessageSt(messageTxt, senderUid);
+                    binding.chat.setText("");
 
-                sDatabase.getReference().child("GroupChat")
-                        .push()
-                        .setValue(messageSt);
-            }
-        });
+                    sDatabase.getReference().child("GroupChat")
+                            .push()
+                            .setValue(messageSt);
+                }
+            });
     }
 }

@@ -1,6 +1,7 @@
 package com.example.teacherspet.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.teacherspet.Chats.Chat;
 import com.example.teacherspet.R;
 import com.example.teacherspet.DataClass.UserStudent;
 
@@ -39,6 +41,16 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         holder.userNameS.setText(userStudent.getStudentName());
         holder.userUsn.setText(userStudent.getStudentUsn());
         holder.userEmailS.setText(userStudent.getStudentEmail());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(contextS, Chat.class);
+                intent.putExtra("names", userStudent.getStudentName());
+                intent.putExtra("uids", userStudent.getUidS());
+                contextS.startActivity(intent);
+            }
+        });
 
 
 

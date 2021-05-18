@@ -37,6 +37,8 @@ public class verification_teacher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification_teacher);
 
+        setTitle("Verification");
+
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser1 = mAuth.getCurrentUser();
 

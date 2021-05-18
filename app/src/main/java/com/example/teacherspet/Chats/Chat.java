@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.teacherspet.Adapters.MessageSAdapter;
 import com.example.teacherspet.DataClass.MessageSt;
 import com.example.teacherspet.R;
+import com.example.teacherspet.TeacherInfo;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,11 +27,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ChatStudent extends AppCompatActivity {
+public class Chat extends AppCompatActivity {
 
     private EditText chat;
     private RecyclerView chatRecyclerView;
     private ImageView sendButton;
+
+    private TextView userName;
+    private ImageView userIfo;
 
     String senderRoom, receiverRoom;
 
@@ -40,10 +48,23 @@ public class ChatStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_student);
 
+        getSupportActionBar().hide();
+
         chat = findViewById(R.id.chat);
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         sendButton = findViewById(R.id.sendButtton);
+
+        userName = findViewById(R.id.NameT);
+        userIfo = findViewById(R.id.userInfo);
+
+        userIfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Chat.this, TeacherInfo.class);
+                startActivity(intent);
+            }
+        });
 
         messageSts = new ArrayList<>();
         adapter = new MessageSAdapter(this, messageSts);
@@ -79,7 +100,7 @@ public class ChatStudent extends AppCompatActivity {
                     }
                 });
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
+            sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String messageTxt = chat.getText().toString();
@@ -107,7 +128,7 @@ public class ChatStudent extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setTitle(names);
+        userName.setText(names);
 
     }
 }

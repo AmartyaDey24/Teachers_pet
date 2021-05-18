@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.teacherspet.Chats.ChatStudent;
+import com.example.teacherspet.Chats.Chat;
 import com.example.teacherspet.R;
 import com.example.teacherspet.DataClass.UserTeacher;
 
@@ -40,11 +40,12 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
         UserTeacher userTeacher = userTeachers.get(position);
         holder.userNameT.setText(userTeacher.getTeacherName());
         holder.userEmailT.setText(userTeacher.getTeacherEmail());
+        holder.userDep.setText(userTeacher.getDep());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(contextT, ChatStudent.class);
+                Intent intent = new Intent(contextT, Chat.class);
                 intent.putExtra("names", userTeacher.getTeacherName());
                 intent.putExtra("uids", userTeacher.getUidT());
                 contextT.startActivity(intent);
@@ -60,12 +61,13 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
 
     public class TeacherViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView userNameT, userEmailT;
+        private TextView userNameT, userEmailT,userDep;
 
         public TeacherViewHolder(@NonNull View itemView) {
             super(itemView);
             userNameT = itemView.findViewById(R.id.userNameT);
             userEmailT = itemView.findViewById(R.id.userEmailT);
+            userDep = itemView.findViewById(R.id.userDep);
         }
     }
 }
