@@ -6,65 +6,65 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".Notes.Subjects">
+    tools:context=".Notes.Student_subjects">
 
-    <com.google.android.material.textview.MaterialTextView
+    <Button
         android:id="@+id/INS"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@color/design_default_color_secondary"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="INS"
         android:textSize="45sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <Button
         android:id="@+id/SG"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@color/design_default_color_secondary"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="SG"
         android:textSize="45sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@color/design_default_color_secondary"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="AI"
         android:textSize="45sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@color/design_default_color_secondary"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="CD"
         android:textSize="45sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@color/design_default_color_secondary"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="PC"
         android:textSize="45sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/design_default_color_secondary"
+        android:background="@drawable/box"
         android:gravity="center"
         android:text="PP"
         android:textSize="45sp" />

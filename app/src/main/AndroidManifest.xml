@@ -20,7 +20,8 @@
         <activity android:name=".Notes.Ina_M1" />
         <activity android:name=".Notes.SG" />
         <activity android:name=".Notes.INS" />
-        <activity android:name=".Notes.Subjects" />
+        <activity android:name=".Notes.Student_subjects" />
+        <activity android:name=".Notes.Teacher_subjects" />
         <activity android:name=".Chats.Chat" />
         <activity android:name=".TeacherRegister" />
         <activity android:name=".StudentRegister" />

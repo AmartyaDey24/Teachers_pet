@@ -1,14 +1,11 @@
 package com.example.teacherspet.Calender
 
-import android.icu.util.Calendar
 import android.os.Bundle
-import android.provider.CalendarContract
 import android.view.View
 import android.widget.CalendarView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.teacherspet.R
-import org.w3c.dom.Text
 
 
 class CalenderOfEvents : AppCompatActivity() {
@@ -38,26 +35,23 @@ class CalenderOfEvents : AppCompatActivity() {
 
         calender = findViewById<View>(R.id.calender) as CalendarView
         date_view = findViewById<View>(R.id.date_view) as TextView
-        val event_desc=findViewById<TextView>(R.id.calender_event_view)
+        val eventDesc=findViewById<TextView>(R.id.calender_event_view)
 
         //initializing calender
         calender!!
                 .setOnDateChangeListener { view, year, month, dayOfMonth ->
-
+                    eventDesc.visibility=View.INVISIBLE
                     val Date = (dayOfMonth.toString() + "-" + (month + 1) + "-" + year)
 
                     // set this date in TextView for Display
                     date_view!!.text = Date
                     events.forEach {
                         if(Date==it.date) {
-                            event_desc.text=it.eventName
+                            eventDesc.text=it.eventName
+                            eventDesc.visibility=View.VISIBLE
                         }
-
                     }
-
                 }
-
-
     }
 }
 

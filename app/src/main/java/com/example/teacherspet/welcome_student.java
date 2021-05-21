@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.teacherspet.Calender.CalenderOfEvents;
 import com.example.teacherspet.Chats.OfficialGroup;
-import com.example.teacherspet.Notes.Subjects;
+import com.example.teacherspet.Notes.Student_subjects;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -95,7 +95,7 @@ public class welcome_student extends AppCompatActivity {
         viewNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent subjectlist = new Intent(welcome_student.this, Subjects.class);
+                Intent subjectlist = new Intent(welcome_student.this, Student_subjects.class);
                 startActivity(subjectlist);
             }
         });

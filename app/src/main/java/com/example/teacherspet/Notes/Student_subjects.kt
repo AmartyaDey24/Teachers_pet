@@ -1,16 +1,15 @@
 package com.example.teacherspet.Notes
 
 import android.content.Intent
-import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.teacherspet.R
 
-class Subjects : AppCompatActivity() {
+class Student_subjects : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_subjects)
+        setContentView(R.layout.activity_subjects_student)
 
         val ins:TextView=findViewById(R.id.INS)
         val sg:TextView=findViewById(R.id.SG)
