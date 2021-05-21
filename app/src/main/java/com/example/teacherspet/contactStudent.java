@@ -28,7 +28,7 @@ public class contactStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_student);
 
-        studentRecyclerView = findViewById(R.id.facultyRecyclerView);
+        studentRecyclerView = findViewById(R.id.studentRecyclerView);
 
         sDatabase = FirebaseDatabase.getInstance();
         userStudents = new ArrayList<>();
