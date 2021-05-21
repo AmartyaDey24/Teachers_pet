@@ -1,17 +1,26 @@
 package com.example.teacherspet.DataClass;
 
 public class UserTeacher {
-    String uidT,teacherName,teacherEmail,dep,course;
+    String uidT,teacherName,teacherEmail,dep,course,language;
 
-    public UserTeacher(String uidT, String teacherName, String teacherEmail, String dep, String course) {
+    public UserTeacher(String uidT, String teacherName, String teacherEmail, String dep, String course, String language) {
         this.uidT = uidT;
         this.teacherName = teacherName;
         this.teacherEmail = teacherEmail;
         this.dep = dep;
         this.course = course;
+        this.language = language;
     }
 
     public UserTeacher() {
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public String getCourse() {

@@ -35,7 +35,6 @@ class CalenderOfEvents : AppCompatActivity() {
         events.add(Event("16-1-2021","Makeup Examinations."))
         events.add(Event("1-2-2021","Last Day for Registration of Courses."))
         events.add(Event("3-2-2021","Reopening of Classes."))
-        events.add(Event("5-5-2021","My Birthday!!!."))
 
         calender = findViewById<View>(R.id.calender) as CalendarView
         date_view = findViewById<View>(R.id.date_view) as TextView
@@ -45,8 +44,7 @@ class CalenderOfEvents : AppCompatActivity() {
         calender!!
                 .setOnDateChangeListener { view, year, month, dayOfMonth ->
 
-                    val Date = (dayOfMonth.toString() + "-"
-                            + (month + 1) + "-" + year)
+                    val Date = (dayOfMonth.toString() + "-" + (month + 1) + "-" + year)
 
                     // set this date in TextView for Display
                     date_view!!.text = Date
@@ -54,6 +52,7 @@ class CalenderOfEvents : AppCompatActivity() {
                         if(Date==it.date) {
                             event_desc.text=it.eventName
                         }
+
                     }
 
                 }

@@ -7,15 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.teacherspet.Adapters.MessageSAdapter;
 import com.example.teacherspet.DataClass.MessageSt;
+import com.example.teacherspet.DataClass.UserTeacher;
 import com.example.teacherspet.R;
 import com.example.teacherspet.TeacherInfo;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -55,7 +54,7 @@ public class Chat extends AppCompatActivity {
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         sendButton = findViewById(R.id.sendButtton);
 
-        userName = findViewById(R.id.NameT);
+        userName = findViewById(R.id.EmailT);
         userIfo = findViewById(R.id.userInfo);
 
         userIfo.setOnClickListener(new View.OnClickListener() {
@@ -70,8 +69,8 @@ public class Chat extends AppCompatActivity {
         adapter = new MessageSAdapter(this, messageSts);
         chatRecyclerView.setAdapter(adapter);
 
-        String names = getIntent().getStringExtra("names");
-        String receiverUids = getIntent().getStringExtra("uids");
+        String names = getIntent().getStringExtra("namesT");
+        String receiverUids = getIntent().getStringExtra("uidsT");
         String senderUids = FirebaseAuth.getInstance().getUid();
 
         senderRoom = senderUids + receiverUids;

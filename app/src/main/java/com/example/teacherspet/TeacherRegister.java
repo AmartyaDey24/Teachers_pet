@@ -25,7 +25,7 @@ public class TeacherRegister extends AppCompatActivity {
     private FirebaseAuth tAuth;
     private FirebaseDatabase tDatabase;
 
-    private EditText teacherName, teacherEmail,course;
+    private EditText teacherName, teacherEmail,course,language;
     private Button teacherCont;
     private TextView trError;
 
@@ -46,6 +46,7 @@ public class TeacherRegister extends AppCompatActivity {
         teacherName = findViewById(R.id.teacherName);
         teacherEmail = findViewById(R.id.teacherEmail);
         course = findViewById(R.id.course);
+        language = findViewById(R.id.language);
 
         trError = findViewById(R.id.trerror);
 
@@ -83,6 +84,7 @@ public class TeacherRegister extends AppCompatActivity {
         String tEmail = teacherEmail.getText().toString();
         String dept = dep.getText().toString();
         String crs = course.getText().toString().toUpperCase();
+        String lang = language.getText().toString();
 
         if (tName.isEmpty() || tEmail.isEmpty()){
 
@@ -92,13 +94,13 @@ public class TeacherRegister extends AppCompatActivity {
         }
         else {
 
-            UserTeacher userTeacherM = new UserTeacher(uidT,tName,tEmail,dept,crs);
+            UserTeacher userTeacherM = new UserTeacher(uidT,tName,tEmail,dept,crs,lang);
             tDatabase.getReference()
                     .child("Users")
                     .child(uidT)
                     .setValue(userTeacherM);
 
-            UserTeacher userTeacher = new UserTeacher(uidT,tName,tEmail,dept,crs);
+            UserTeacher userTeacher = new UserTeacher(uidT,tName,tEmail,dept,crs,lang);
             tDatabase.getReference()
                     .child("Teacher")
                     .child(uidT)

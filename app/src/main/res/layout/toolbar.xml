@@ -7,7 +7,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/userInfo"
@@ -23,12 +27,12 @@
             android:layout_marginEnd="7dp"
             android:layout_marginRight="7dp"
             android:layout_marginBottom="14dp"
-            android:layout_toEndOf="@+id/NameT"
-            android:layout_toRightOf="@+id/NameT"
+            android:layout_toEndOf="@+id/EmailT"
+            android:layout_toRightOf="@+id/EmailT"
             app:srcCompat="@drawable/informationbutton" />
 
         <TextView
-            android:id="@+id/NameT"
+            android:id="@+id/EmailT"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:layout_alignParentStart="true"
