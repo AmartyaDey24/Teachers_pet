@@ -69,8 +69,8 @@ public class Chat extends AppCompatActivity {
         adapter = new MessageSAdapter(this, messageSts);
         chatRecyclerView.setAdapter(adapter);
 
-        String names = getIntent().getStringExtra("namesT");
-        String receiverUids = getIntent().getStringExtra("uidsT");
+        String names = getIntent().getStringExtra("name");
+        String receiverUids = getIntent().getStringExtra("uid");
         String senderUids = FirebaseAuth.getInstance().getUid();
 
         senderRoom = senderUids + receiverUids;

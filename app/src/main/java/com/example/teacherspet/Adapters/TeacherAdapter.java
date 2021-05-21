@@ -46,8 +46,8 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(contextT, Chat.class);
-                intent.putExtra("namesT", userTeacher.getTeacherName());
-                intent.putExtra("uidsT", userTeacher.getUidT());
+                intent.putExtra("name", userTeacher.getTeacherName());
+                intent.putExtra("uid", userTeacher.getUidT());
                 contextT.startActivity(intent);
             }
         });
